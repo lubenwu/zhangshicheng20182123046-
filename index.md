@@ -190,3 +190,142 @@
 
 
 　　这时，他就可以看到你做的文件修改，并选择review你的代码，最后决定是否merge到他的原有项目之中。
+  
+  三、Git基本操作
+
+
+　　3.1 安装Git
+　　可以去官网选择下载，这里使用的是Git-2.9.0 64位版本：点我下载
+
+　　全程傻瓜化安装，下一步即可，可以把命令模式和图形界面模式都勾选上。
+
+
+
+　　3.2 Git基本流程
+
+
+　　3.3 Git初始化操作及仓库管理
+　　这里我们主要采用命令行模式，这也是Linux服务器的精髓所在，图形模式很easy，看看就会了。
+
+　　（1）设置基本信息
+
+-- 设置用户名
+
+git config --global user.name 'zhangsan'
+
+-- 设置账户邮箱
+
+git config --global user.email 'zhangsan@qq.com'　　
+
+　　新建一个文件夹作为你的Git Workspace，然后打开Git Bash命令行界面：
+
+
+
+　　（2）初始化一个新的Git仓库
+
+　　Step1.创建一个仓库文件夹，这里取名跟刚刚在GitHub里面一样的DataStructure.Demo.CSharp
+
+　　Step2.在文件内初始化Git（创建Git仓库）
+
+--初始化
+
+git init
+
+
+
+　　（3）向仓库中添加文件
+
+　　假设我们写了一个MyArrayStack类，我们把他copy到该文件夹中，使用以下命令加入到暂存区中：
+
+git add MyArrayStack.cs
+
+
+
+　　然后我们需要将暂存区文件添加到仓库：
+
+git commit -m 'add MyArrayStack.cs'
+
+
+　　这时我们再通过git status查看，你会发现已经没有什么文件更改或要提交的文件了。
+
+　　（4）修改文件
+
+　　当你修改了文件之后，通过git status可以查看到你修改了什么东西，同样还是要经历提交到暂存区再提交到仓库的步骤，此处不再赘述。
+
+　　（5）删除文件
+
+　　当你不再想要某个代码文件时，你可以通过git rm filename的命令删除文件：
+
+git rm MyArrayStack.cs
+
+
+
+　　3.4 使用Git管理远程仓库
+　　我们刚刚提到Git的基本流程是工作区到暂存区再到Git仓库，那么Git仓库和远程仓库又是如何联系起来的呢？
+
+
+
+　　（1）Git克隆操作：将远程仓库复制到本地
+
+git clone https://github.com/edisonchou/DataStructure.Demo.CSharp　　
+
+
+
+
+
+　　（2）修改代码，按照老步骤提交到Git仓库
+
+　　这里因为原始项目是啥也没有，所以我索性把我之前写的一个数据结构的Demo程序库直接拖动到了这个文件夹中。
+
+-- 添加所有文件
+
+git add --all　
+
+git status
+
+git commit -m 'add solution code'　
+
+
+
+　　这时我们已经提交到了git仓库，需要同步到github远程仓库了：
+
+git push
+
+-- 后面可能会要求你输入账号和密码
+
+
+
+　　这时我们再次进入GitHub主页，可以看到我们的项目已经有刚刚同步的代码了：
+
+
+
+　　PS：如果出现git push错误，提示The requested URL returned error : 403 Forbidden while accessing.你可以输入用户名密码或者远程地址采用这种类型（vi.git/config）
+
+　　将[remote "orgin"] url=https://github.com/用户名/仓库名.git
+
+　　改为[remote "orgin"] url=https://github.com/用户名:密码@github.com/用户名/仓库名.git
+
+四、GitHub Pages搭建网站
+　　4.1 个人站点
+　　GitHub要求个人站点的仓库名称必须是 用户名.github.io, 例如edisonchou.github.io
+
+　　建立方法很简单，也是新建一个repository，然后填写你的个人站点名，例如 edisonchou.github.io。之后通过Git，你可以将你在本地开发的html网页同步到github，之后你就可以通过域名访问你的个人站点啦！
+
+
+
+　　发布之后的个人站点如下：
+
+
+
+　　4.2 项目站点
+　　搭建后的访问域名为：https://用户名.github.io/仓库名
+
+　　（1）进入项目主页，点击Settings
+
+　　（2）在Settings页面，点击Launch automatic page generator来自动生成主题页面
+
+　　（3）新建站点基础信息设置
+
+　　（4）选择主题
+
+　　（5）生成网页
