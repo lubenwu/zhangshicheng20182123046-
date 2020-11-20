@@ -1,6 +1,7 @@
 ## Welcome to GitHub Pages
 一、基本概念
 　　1.1 必须了解的概念
+  
 　　（1）仓库 - Repository
 
 　　仓库即你的项目，你想在GitHub上开源一个项目，那就必须要新建一个Repository。如果你开源的项目有多个，那么你就有多个Repositories。
